@@ -11,9 +11,9 @@
 
 <body>
   <script>
-    const init = function () {
-      const width = 800,
-        height = 600;
+    const init = () => {
+      const width = 800
+      const height = 600;
 
       // レンダラーを作成
       const renderer = new THREE.WebGLRenderer();
@@ -36,8 +36,6 @@
 
       // 箱を作成
       const geometry = new THREE.BoxGeometry(1, 1, 1);
-      //const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
-      //const box = new THREE.Mesh(geometry, material);
       const box = new THREE.Mesh(geometry, mat);
       box.position.z = -5;
       scene.add(box);
@@ -59,7 +57,7 @@
       scene.add(directionalLight3);
 
       // 初回実行
-      const update = function () {
+      const update = () => {
         requestAnimationFrame(update);
 
         // 箱を回転させる
