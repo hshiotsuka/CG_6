@@ -28,17 +28,32 @@
       // テクスチャー読み込み
       const textureLoader = new THREE.TextureLoader();
       const texture = textureLoader.load("cit.png");
+
       const mat = new THREE.MeshPhongMaterial();
       mat.map = texture;
       const bump = textureLoader.load("cit.png");
       mat.bumpMap = bump;
       mat.bumpscale = 0.2;
 
+      // テクスチャー読み込み
+      const texture_google = textureLoader.load("btn_google_dark_focus_ios.png ");
+      const mat_google = new THREE.MeshPhongMaterial();
+      mat_google.map = texture_google;
+      const bump_google = textureLoader.load("btn_google_dark_focus_ios.png ");
+      mat_google.bumpMap = bump_google;
+      mat_google.bumpscale = 0.2;
+
       // 箱を作成
       const geometry = new THREE.BoxGeometry(1, 1, 1);
       const box = new THREE.Mesh(geometry, mat);
       box.position.z = -5;
+      box.position.y = 1;
       scene.add(box);
+
+      const box2 = new THREE.Mesh(geometry, mat_google);
+      box2.position.z = -5;
+      box.position.y = 2;
+      scene.add(box2);
 
       // 平行光源
       const directionalLight1 = new THREE.DirectionalLight(0xffffff);
@@ -63,6 +78,9 @@
         // 箱を回転させる
         box.rotation.x += 0.01;
         box.rotation.y += 0.01;
+
+        box2.rotation.x += 0.01;
+        box2.rotation.y += 0.01;
 
         renderer.render(scene, camera);
       };
